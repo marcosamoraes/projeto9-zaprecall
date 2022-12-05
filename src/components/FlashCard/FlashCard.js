@@ -17,13 +17,13 @@ export default function FlashCard(props) {
       let icon = null;
       switch (cardStatus) {
         case "green":
-          icon = (<img data-test="no-icon" src={SuccessIcon} alt="Success Icon" />);
+          icon = (<img data-test="zap-icon" src={SuccessIcon} alt="Success Icon" />);
           break;
         case "yellow":
           icon = (<img data-test="partial-icon" src={AlmostIcon} alt="Almost Icon" />);
           break;
         default:
-          icon = (<img data-test="zap-icon" src={ErrorIcon} alt="Error Icon" />);
+          icon = (<img data-test="no-icon" src={ErrorIcon} alt="Error Icon" />);
           break;
       }
       return (
