@@ -42,8 +42,14 @@ export const Container = styled.div`
     color: #333333;
     position: relative;
     display: flex;
+    align-items: start;
     flex-direction: column;
     justify-content: space-between;
+
+    > p {
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
 
     > img {
       position: absolute;
