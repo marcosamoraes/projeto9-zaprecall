@@ -17,18 +17,18 @@ export default function FlashCard(props) {
       let icon = null;
       switch (cardStatus) {
         case "green":
-          icon = (<img src={SuccessIcon} alt="Success Icon" />);
+          icon = (<img data-test="no-icon" src={SuccessIcon} alt="Success Icon" />);
           break;
         case "yellow":
-          icon = (<img src={AlmostIcon} alt="Almost Icon" />);
+          icon = (<img data-test="partial-icon" src={AlmostIcon} alt="Almost Icon" />);
           break;
         default:
-          icon = (<img src={ErrorIcon} alt="Error Icon" />);
+          icon = (<img data-test="zap-icon" src={ErrorIcon} alt="Error Icon" />);
           break;
       }
       return (
         <Container className={`finished ${cardStatus}`}>
-          <p>Pergunta {props.index + 1}</p>
+          <p data-test="flashcard-text">Pergunta {props.index + 1}</p>
           {icon}
         </Container>
       );
@@ -37,11 +37,11 @@ export default function FlashCard(props) {
     if (cardTurned) {
       return (
         <Container className="open back">
-          <p>{props.card.answer}</p>
+          <p data-test="flashcard-text">{props.card.answer}</p>
           <div className="buttons">
-            <button className="red" onClick={() => {finishCard('red')}}>Não lembrei</button>
-            <button className="yellow" onClick={() => {finishCard('yellow')}}>Quase não lembrei</button>
-            <button className="green" onClick={() => {finishCard('green')}}>Zap!</button>
+            <button className="red" data-test="no-btn" onClick={() => {finishCard('red')}}>Não lembrei</button>
+            <button className="yellow" data-test="partial-btn" onClick={() => {finishCard('yellow')}}>Quase não lembrei</button>
+            <button className="green" data-test="zap-btn" onClick={() => {finishCard('green')}}>Zap!</button>
           </div>
         </Container>
       );
@@ -50,10 +50,11 @@ export default function FlashCard(props) {
     if (cardOpen) {
       return (
         <Container className="open">
-          <p>{props.card.question}</p>
+          <p data-test="flashcard-text">{props.card.question}</p>
           <img
             src={Turn}
             alt="Turn Button"
+            data-test="turn-btn"
             onClick={() => setCardTurned(true)}
           />
         </Container>
@@ -62,8 +63,8 @@ export default function FlashCard(props) {
 
     return (
       <Container>
-        <p>Pergunta {props.index + 1}</p>
-        <img src={Play} alt="Play Button" onClick={() => setCardOpen(true)} />
+        <p data-test="flashcard-text">Pergunta {props.index + 1}</p>
+        <img src={Play} alt="Play Button" data-test="play-btn" onClick={() => setCardOpen(true)} />
       </Container>
     );
   }
@@ -75,6 +76,6 @@ export default function FlashCard(props) {
   }
 
   return (
-    <>{renderContent()}</>
+    <div data-test="flashcard">{renderContent()}</div>
   );
 }
