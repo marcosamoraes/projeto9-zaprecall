@@ -1,10 +1,15 @@
-import './App.css';
+import { Body } from './App.styles';
+import Header from './components/Header/Header'
+import Deck from './components/Deck/Deck'
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
-    <>
-    olá
-    </>
+    <Body>
+      <Header />
+      <Deck />
+      <Footer />
+    </Body>
   );
 }
 
